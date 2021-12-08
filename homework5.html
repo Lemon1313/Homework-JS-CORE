@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	//task1
+	<script type="text/javascript">
+		function propsCount(params) {
+			return Object.keys(params).length;
+	}		
+
+	mentor = {"course" : "Js fundamental", 
+	           "duration" : "3",
+               "direction" : "web-development"};
+let size = Object.keys(mentor).length;
+
+console.log(size);
+
+		
+	</script>
+	//task2
+	<script type="text/javascript">
+		function showProps(obj){
+		return Object.keys(obj);
+	}
+	Animals = {
+		"type1" : "cat",
+		"type2" : "fish",
+		"type3" : "dogs",
+		"type4" : "bird"
+	};
+	let props =Object.keys(Animals);
+	console.log(Animals);
+	</script>
+//task3
+<script type="text/javascript">
+		class Person{
+			constructor(name,surname){
+			this.name = name;
+			this.surname = surname;
+			
+	}
+Fullname(){
+	alert(this.name + " " + this.surname);
+    }
+}
+
+
+ class Student1 extends Person {
+	constructor(name,surname,midlename,year){
+	super(name,surname);
+	this.midlename = midlename;
+	this.year = year;
+}
+
+	Fullname1(){
+		alert(this.name + " " + this.surname + " "
+			+ this.midlename);
+	}
+}
+  function Course(year){
+  	if(year == 2015){
+  		alert("current course 6");
+
+  	}else if (year == 2014){
+  		alert("current course 5");
+
+  	}else if(year == 2013){
+  		alert("current course 4");
+
+  	}else if(year == 2012){
+  		alert("current course 3");
+
+}else if(year == 2011){
+  		alert("current course 2");
+
+	  	}else if(year == 2010){
+  		alert("current course 1");
+}
+};
+let student1 = new Student1("Kim","Ji","Jun");
+
+console.log(student1.Fullname1());
+
+console.log(Course(2012));
+
+	 
+</script>
+//task4
+<script type="text/javascript">
+	class Worker{
+
+	constructor(name,surname,salary,days,experience,newexperience){
+			this.name = name;
+			this.surname = surname;
+			this.salary = salary;
+			this.days = days;
+			this._experience = experience;
+			this._newexperience = newexperience;
+		}
+		get experience(){
+		   	return this._experience;
+	}	   
+	get newexperience(){
+		return this._newexperience;
+	}
+		fullname(){
+			alert(this.name + " " + this.surname);
+		}
+		showSalary(){
+			alert(this.salary*this.days + "грн");
+		}
+showSalarywithExperience(){
+		   		alert(this.salary*this.days*this._experience + "грн")
+		   	}
+		   	showSalarywithNewExperience(){
+		   		alert(this.salary*this.days*this._newexperience + "грн")
+		   	}
+
+		   };
+  
+	
+	let worker = new Worker("Kim","Ji",150,14,1.2,1.5);
+	let worker2 = new Worker("Li","Min",75,31,1.2,1.5);
+
+	console.log(worker.fullname());
+	console.log(worker.showSalary());
+	console.log(worker.showSalarywithExperience());
+	console.log(worker.showSalarywithNewExperience());
+	console.log(worker2.fullname());
+	console.log(worker2.showSalary());
+	console.log(worker2.showSalarywithExperience());
+	console.log(worker2.showSalarywithNewExperience());
+</script>
+//task5
+<script type="text/javascript">
+	class GeometricFigure{
+		getArea(){
+			return 0;
+	}
+	toString(){
+		return Object.getPrototypeOf(this).constructor.name;
+	}
+} class Triangle extends GeometricFigure{
+	constructor(a,b){
+		super();
+		
+		this.a = a;
+		this.b = b;
+	}
+	getArea (){
+		alert( "Triangle area :" +" "+
+		 this.a*this.b);
+	
+};
+
+
+}class Square extends GeometricFigure{
+	constructor(c){
+		super();
+		
+		
+		this.c = c;
+	}
+	getArea(){
+		alert(" Square area ;"+ " "+
+		 this.c*this.c);
+	
+};
+}class Circle extends GeometricFigure{
+	constructor(r){
+		
+super();
+		this.r = r
+	}
+	getArea(){
+alert("Circle area :"+ " "+
+   Math. PI * this. r * this. r);
+	}
+	
+
+};
+const figures = new Triangle(2,5);
+const figures2 = new Square(7);
+const figures3 = new Circle(5);
+
+
+
+console.log(figures.getArea());
+console.log(figures2.getArea());
+console.log(figures3.getArea());
+
+
+
+</script>
+</body>
+</html>
