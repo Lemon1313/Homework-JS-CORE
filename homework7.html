@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA_Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	let openTab = window.open(width=300,height=300);
+
+</script>
+</body>
+//task2
+<body>
+	<p id ='text'>I learning JavaScript events!</p> 
+	<div>
+	<button id ="button">Change style!</button>
+</div>
+
+<script>
+   button.addEventListener("click",changeCSS);
+   function changeCSS(){
+   	let p = document.querySelector("#text");
+   	text.style.color = "orange";
+   	text.style.fontFamily = "Comic Sans MS";
+   	text.style.fontSize = "20px"
+   }
+   
+    
+</script>
+</div>
+//task3 ????
+<body id='body'>
+ <button type="button" onclick="myFunction()">Change Color to blue</button>
+ <button type="button1" onclick="myFunction1()">Change Color to pink</button>
+ <button type="button2" onclick="myFunction2()">Change Color to brown</button>
+
+<script>
+function myFunction()
+{   
+document.body.style.backgroundColor= "blue";
+} function myFunction1(){
+	document.body.style.backgroundColor= "pink";
+}function myFunction2(){
+	document.body.style.backgroundColor= "brown";
+}
+
+</script>
+
+
+</body>
+//task4
+
+<body>
+	
+	<div id="select">
+
+        <select name="name1" id="
+        name">
+          <option value="enni">Enni</option>
+          <option value="john">John</option>
+          <option value="Anna">Anna</option>
+          <option value="karen">Karen</option>
+          <option value="kim">Kim</option>
+          <option value="lisa">Lisa</option>
+        </select>
+        <button>Choose and Delate</button>
+      </div>
+      <script type="text/javascript">
+      	document.getElementById('name').onclick = function() {
+      document.getElementById('select').delete = true;
+    }
+      </script>
+</body>
+//task 6
+<body>
+	<script type="text/javascript">
+	window.screen object("resize", function() {
+        alert(screen.height);
+        alert(screen.width);
+    });
+</script>
+</body>
+//task7
+<body>
+	
+	<select name="country" id="country">
+	<option value="ger">Germany</option>
+	<option value="usa">USA</option>
+	<option value="ukr">Ukraine</option>
+</select>
+                    
+<select name="cities" id="cities"></select>
+<p></p>
+<script type="text/javascript">
+	
+	let selectCountry = document.getElementById("country");
+	let selectCities = document.getElementById("cities");
+	let pElem = document.getElementById("p");
+
+	selectCountry.addEventListener("change" , function(){
+		let index = selectCountry.selectIndex;
+
+		 pElem.innerHTML = 'selectedIndex: ' + index;
+})
+
+</script>
+
+
+</body>
+
+
+
+</html>
