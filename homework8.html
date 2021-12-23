@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA_Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<title>Document</title>
+	
+</head>
+//task1
+<body>
+<script type="text/javascript">
+	const regExp = /bv/gi;
+	function upperCase(str){
+		const regExp = /^[A-ZA-Я]\w*/g;
+		regExp.test(str)
+	}
+	upperCase('regexp');
+	upperCase('regExp');
+</script>
+</body>
+//task2
+<body>
+<script >
+	function checkEmail(inputText){
+
+let mailformat = /\S+@\S+\.\S+/;
+console.log(mailformat.test(inputText));
+}	checkEmail("Qmail@gmail.com")
+
+
+</script>
+</body>
+//task3
+<body>
+	<script type="text/javascript">
+		let myRe = /d(b+)(d)/i;
+
+let myArray = myRe.exec("cdbBdbsbz");
+
+console.log(myArray);
+	</script>
+</body>
+//task 4
+<body>
+	<script type="text/javascript">
+	const re = /(\w+)\s(\w+)/;
+	const str = "Java script";
+	const newstr = str.replace(re, "$2,$1");
+	console.log(newstr);
+
+
+	</script>
+</body>
+
+
+
+
+//task 5
+<body>
+
+	<script type="text/javascript">
+		function ValidateCreditCardNumber(str) {
+
+  
+  let regEx = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
+  
+  let isValid = regEx.test(str);
+
+  if(isValid) {
+     alert("Thank You!");
+  } else {
+     alert("Please provide a valid Visa number!");
+  }
+}   ValidateCreditCardNumber("9999-9999-9999-9999");
+	</script>
+</body>
+//task 6
+
+	<script type="text/javascript">
+		function checkEmeil(str){
+
+		const mailP = /^[A-zA-Z0-9]+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/;
+
+		if(mailP.test(str)){
+			console.log("Emeil correct!");
+		} else{
+			console.log("Emeil isn`t correct!Try again.");
+		}
+	}
+		
+		checkEmail('my_mail@gmail.com');
+	</script>
+
+	//task 7
+<script type="text/javascript">
+	function checkLogin(data){
+		let myRe = /^[a-zA-Z]{1}[A-zA-Z0-9\.]{1,9}$/;
+		let reNumber = /[0-9\.]+/g;
+		let resultNum = data.match(reNumber);
+		let result = myRe.test(data);
+		console.log(`${data} is ${result} - ${resultNum}`);
+}
+		checkLogin('ee1.1ret3');
+		checkLogin('ee1*1ret3');
+	
+</script>
+</html>
+
