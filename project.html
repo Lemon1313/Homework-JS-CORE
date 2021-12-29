@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewpart" content="width-device-width,initial-scale=1.0">
+  <title>To.do.List</title>
+  
+  <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+    <style>
+      body {
+        background-color: #008080
+        font-family: 'Crimson Pro', serif;
+        font-size: 16px;
+      }
+      .container{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        background-color: #008080;
+        box-shadow: 0 2px 8px rgba(0,0,0,0,1);
+        width: 560px;
+        height: 650px;
+        text-align: center;
+      }
+      h1{
+        margin: 12px 0;
+
+      }
+       h2{
+        margin: 1px ;
+        background-color: #87CEFA;
+      }
+      .add-element{
+        margin: 12px 0;
+
+      }
+
+      input{
+        padding: 6px 4px;
+        width: 70%
+    }
+      
+button{
+        padding: 14px 19px;
+        background-color:   #ff0000;
+        border: none;
+        border-radius: 4px;
+        color: #fafafa;
+
+      }
+ 
+      .element-list{
+        height: 550px;
+        overflow-y: auto;
+
+      }
+      
+ 
+      ul{
+        padding: 15px
+      }
+      li{
+        list-style: none;
+        padding: 8px 5px;
+        background-color:   #B0C4DE;
+        margin: 12px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0,1);
+        border-radius: 3px;
+        transition: .4s;
+      }
+   
+      
+      
+      }.trash-btn,
+.complete-btn {
+  background: #ff6f47;
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+}.complete-btn {
+  background: #00FF00;
+  padding: 10px 14px;
+  margin: 5px
+}.trash-btn{
+  padding: 10px 14px;
+  margin: 5px
+}
+
+
+.fa-trash,
+.fa-check {
+  pointer-events: none;
+}
+
+.fall {
+  transform: translateY(10rem) rotateZ(20deg);
+  opacity: 0;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+    </style>
+</head>
+<body>
+ 
+
+
+  
+  <div class = "container">
+    <h1>ToDoList</h1>
+    
+      <form>
+      <input type="text" class="todo" placeholder = "Type something to do">
+   <button class="todo-button" type="submit">
+        <i class="fas fa-plus-square">Add</i>
+      </button>
+      <label for="start"></label>
+
+
+
+    </form>
+    
+    <div class ="element-list">
+   
+  <ul class = "list">
+     
+    <h2> Задачи на день:</h2>
+    
+    
+  </div>
+</div>
+
+
+    
+</div>
+
+      <script >
+
+ const todoInput = document.querySelector(".todo");
+const todoButton = document.querySelector(".todo-button");
+const todoList = document.querySelector(".list");
+
+
+
+ 
+
+ document.addEventListener("DOMContentLoaded", getTodos);
+todoButton.addEventListener("click", addTodo);
+todoList.addEventListener("click", deleteTodo);
+
+
+function addTodo(e) {
+ 
+  e.preventDefault();
+  const todoDiv = document.createElement("div");
+  todoDiv.classList.add("todo");
+ 
+  const newTodo = document.createElement("li");
+  newTodo.innerText = todoInput.value;
+  saveLocalTodos(todoInput.value);
+
+
+
+  newTodo.classList.add("todo-item");
+  todoDiv.appendChild(newTodo);
+  todoInput.value = "";
+
+
+
+  const completedButton = document.createElement("button");
+  completedButton.innerHTML = `<i class="fas fa-check"></i>`;
+  completedButton.classList.add("complete-btn");
+  todoDiv.appendChild(completedButton);
+
+  const trashButton = document.createElement("button");
+  trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
+  trashButton.classList.add("trash-btn");
+  todoDiv.appendChild(trashButton);
+
+  todoList.appendChild(todoDiv);
+}
+
+function deleteTodo(e) {
+  const item = e.target;
+
+  if (item.classList[0] === "trash-btn") {
+
+    const todo = item.parentElement;
+    todo.classList.add("fall");
+  
+    removeLocalTodos(todo);
+    todo.addEventListener("transitionend", e => {
+      todo.remove();
+    });
+  }
+  if (item.classList[0] === "complete-btn") {
+    const todo = item.parentElement;
+    todo.classList.toggle("completed");
+    console.log(todo);
+  }
+}
+
+function saveLocalTodos(todo) {
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  todos.push(todo);
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+function removeLocalTodos(todo) {
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  const todoIndex = todo.children[0].innerText;
+  todos.splice(todos.indexOf(todoIndex), 1);
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function getTodos() {
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  todos.forEach(function(todo) {
+   
+    const todoDiv = document.createElement("div");
+    todoDiv.classList.add("todo");
+    
+    const newTodo = document.createElement("li");
+    newTodo.innerText = todo;
+    newTodo.classList.add("todo-item");
+    todoDiv.appendChild(newTodo);
+    todoInput.value = "";
+    
+    const completedButton = document.createElement("button");
+    completedButton.innerHTML = `<i class="fas fa-check"></i>`;
+    completedButton.classList.add("complete-btn");
+    todoDiv.appendChild(completedButton);
+   
+    const trashButton = document.createElement("button");
+    trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
+    trashButton.classList.add("trash-btn");
+    todoDiv.appendChild(trashButton);
+   
+    todoList.appendChild(todoDiv);
+  });
+}
+  </script>
+  
+</body>
+</html>
