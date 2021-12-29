@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+//task1
+<body>
+<script type="text/javascript">
+	let arr = ["Tom", "Sam", "Ray", "Bob"];
+let [x,y, ,...z] = arr;
+console.log(x); // "Tom"
+console.log(y); // "Sam"
+console.log(z); // [Bob]
+
+</script>
+//task2
+<script type="text/javascript">
+	let data = {
+   names: ["Sam", "Tom", "Ray", "Bob"],
+   ages: [20, 24, 22, 26],
+}
+let [name1,name2,name3,name4] = data.names;
+let [age1,age2,age3,age4]= data.ages;
+console.log(name2); // "Tom"
+console.log(age2); // 24
+console.log(name4); // "Bob"
+console.log(age4); // 26
+
+</script>
+//task2(2)
+<script type="text/javascript">
+	let data1 = {
+   name1: ["Sam", "Tom", "Ray", "Bob"],
+   age1: [20, 24, 22, 26],
+}
+let {name1: nam1,nam2,nam3,nam4, age1: ag1,ag2,ag3,ag4} = data1;
+
+console.log(nam2); // "Tom"
+console.log(ag2); // 24
+console.log(nam4); // "Bob"
+console.log(ag4); // 26
+
+</script>
+//task3
+<script type="text/javascript">
+	function mul() {
+		var tmp = 1;  
+
+let count = 0;  
+
+for (let i = 0; i < arguments.length; i++){  
+if (typeof(arguments[i])==="number"){  
+tmp *=arguments[i];  
+count++;  
+}  
+}  
+
+if (count == 0) return 0;  
+
+return tmp;  
+} 
+console.log(mul(1, "str", 2, 3, true)); // 6
+console.log(mul(null, "str", false, true)); // 0
+
+</script>
+//task4
+<script type="text/javascript">
+	let server = {
+   data: 0,
+   convertToString: function (callback) {
+      callback( () => {
+         return this.data + "";
+      });
+   }
+};
+let client = {
+   server: server,
+   result: "",
+   calc: function (data) {
+      this.server.data = data;
+      this.server.convertToString(this.notification());
+   },
+   notification: function () {
+      return ((callback) => {
+         this.result = callback();
+      })
+   }
+};
+client.calc(123);
+console.log(client.result); // "123"
+console.log(typeof client.result); // "string"
+
+</script>
+//task 5
+<script type="text/javascript">
+
+
+	let keys = [1, 2, 3, 4];
+
+let values = ["div", "span", "b", "i"];
+let map = new Map([
+	[1,"div"],
+	[2,"span"],
+	[3,"b"],
+	[4,"i"]
+	]);
+
+
+console.log(map.size); // 4
+	console.log(map.get(2)); // "span"
+
+
+</script>
+</body>
+
+</html>
